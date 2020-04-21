@@ -29,12 +29,6 @@ def test_storage_file_on_s3(mocker, infile):
     client = mocker.Mock()
     mocker.patch.object(client, "upload_fileobj")
 
-    storage.s3(client,
-               infile,
-               'bucket-name',
-               'file-name')
+    storage.s3(client, infile, 'bucket-name', 'file-name')
 
-    client.upload_fileobj.assert_called_with(
-        infile,
-        "bucket-name",
-        "file-name")
+    client.upload_fileobj.assert_called_with(infile, "bucket-name", "file-name")
